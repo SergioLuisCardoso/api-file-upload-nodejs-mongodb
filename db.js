@@ -9,7 +9,7 @@ async function main() {
     `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@cluster0.jubyzrr.mongodb.net/?retryWrites=true&w=majority`
   );
 
-    console.log("Conectado com sucesso!!")
+    console.log("Connected successfully!!")
     }
 
 

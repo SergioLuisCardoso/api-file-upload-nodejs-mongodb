@@ -20,3 +20,7 @@ build/
 
 # Project description
 Project.txt
+
+#Project images
+images/
+images

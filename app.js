@@ -14,6 +14,6 @@ app.use("/pictures", pictureRouter);
 
 /* app.listen para 'escutar' a porta, disponibilizá-la para utilizarmos via rota*/
 app.listen(port, () =>{
-    console.log(`O servidor está rodando na porta ${port}!`)
+    console.log(`🛸 The server is running on the port ${port}!`)
 
 })
