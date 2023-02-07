@@ -1,10 +1,9 @@
 # API File Upload Nodejs Mongodb
-<!--This application simulates the registration of orders for a hamburger shop, including customer name, order description and value. The system later adds an ID, allows change, cancellation and displays the status of the order.
--->
-Esta API tem por finalidade enviar arquivos de uma máquina local, para o banco de dados MongoDB Atlas.
 
 
 <img src="/images/folder.png" alt="project folder">
+
+Esta API tem por finalidade enviar arquivos de uma máquina local, para o banco de dados MongoDB Atlas.
 
 <!--
 > Routes screen: 
@@ -18,7 +17,10 @@ GET /order, PUT / order/:id, DELETE / Order/:id, GET / Order/:id, PATCH / and Or
 
 ## 🛸 Sobre a aplicação
 
-Esta aplicação simula o cadastro, alteração e status dos pedidos de uma hamburgueria utilizando [Node](https://nodejs.org/en/) e [Express](https://expressjs.com/pt-br/).
+O objetivo dessa aplicação foi criar uma API que pudesse enviar arquivos de uma máquina local, para um banco de dados em nuvem.
+Como tecnologia de back-end, foi utilizado o [Node.js](https://nodejs.org/en/) com [Express](https://expressjs.com/pt-br/) e o banco de dados [MongoDB Atlas](https://www.mongodb.com/), juntamente com as dependências [DotEnv](https://www.dotenv.org/), [Mongoose](https://mongoosejs.com/) e [Multer](https://www.npmjs.com/package/multer). 
+A extensão Thunder Client, presente no VS Code, foi adicionada para criar as requisições e testar as rotas.
+
 
 ### Rotas
 
