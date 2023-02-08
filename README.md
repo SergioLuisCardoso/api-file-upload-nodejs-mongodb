@@ -14,7 +14,7 @@ Esta API tem por finalidade enviar arquivos de uma máquina local, para o banco 
 
 O objetivo dessa aplicação foi criar uma API que pudesse enviar arquivos de uma máquina local, para um banco de dados em nuvem.
 Como tecnologia de back-end, foi utilizado o [Node.js](https://nodejs.org/en/) com [Express](https://expressjs.com/pt-br/) e o banco de dados [MongoDB Atlas](https://www.mongodb.com/), juntamente com as dependências [DotEnv](https://www.dotenv.org/), [Mongoose](https://mongoosejs.com/) e [Multer](https://www.npmjs.com/package/multer). 
-A extensão Thunder Client, presente no VS Code, foi adicionada para criar as requisições e testar as rotas.
+A extensão [Thunder Client](https://www.thunderclient.com/), presente no [VS Code](https://code.visualstudio.com/), foi adicionada para criar as requisições e testar as rotas.
 
 
 ### Rotas
@@ -52,7 +52,6 @@ deletaremos o arquivo pelo seu id:
   "message": "Imagem removida com sucesso!!"
 }
 ```
-
 
 
 #### 📝 Licença
