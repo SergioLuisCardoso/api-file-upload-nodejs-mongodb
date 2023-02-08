@@ -5,15 +5,10 @@
 
 Esta API tem por finalidade enviar arquivos de uma máquina local, para o banco de dados MongoDB Atlas.
 
-<!--
-> Routes screen: 
-GET /order, PUT / order/:id, DELETE / Order/:id, GET / Order/:id, PATCH / and Order/:id using Insomnia.
--->
-> Rotas da aplicação (GET /order, PUT / order/:id, DELETE / Order/:id, GET / Order/:id, PATCH / and Order/:id) exibidos na tela do Insomnia.
 
-<img src="/assets/image-terminal.jpg" alt="terminal image">
+<img src="/images/routes.png" alt="terminal image">
 
-> Exibição dos Middlewares "checkOrderId" e "methUrl" no terminal do VSCode.
+> Rotas da aplicação (POST /pictures, GET /pictures e DELETE / pictures/id:).
 
 ## 🛸 Sobre a aplicação
 
@@ -24,65 +19,39 @@ A extensão Thunder Client, presente no VS Code, foi adicionada para criar as re
 
 ### Rotas
 
-- `POST /order`: A rota recebe o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`, essas informações são passadas dentro do corpo(body) da requisição, e com esses dados registra-se o novo pedido dentro de um array no seguinte formato: `{ id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8", order: "X- Salada, 2 batatas grandes, 1 coca-cola", clientName:"José", price: 44.50, status:"Em preparação" }`. O ID é gerado automaticamente, dentro do código utilizando UUID V4 assim que o pedido é criado, neste estágio o status exibe a mensagem "Em preparação".
+- `POST /pictures`: A rota recebe do usuário o `name` do arquivo: `"Imagem 1"` por exemplo - mostra a sua localização em `src` onde é gerado um `id`, automaticamente. Sua exibição é no seguinte formato: `{"picture": {"name": "Imagem 2", "src": "uploads\\1675816370496.png","_id": "63e2edb293f9d4d01e1f573b","__v": 0}, "msg": "Imagem salva com sucesso"}`. O ID é gerado automaticamente, dentro do código, e neste estágio o status exibe a mensagem "Imagem salva com sucesso".
 
+- `GET /pictures`: Essa rota lista todos as imagens salvas no MongoDB.
 
-- `GET /order`: Essa rota lista todos os pedidos já feitos.
-
-- `PUT /order/:id`: Essa rota altera um pedido já feito. Pode-se alterar,um ou todos os dados do pedido.O `id` do pedido, por padrão, é enviado nos parâmetros da rota.
-
-- `DELETE /order/:id`: Essa rota deleta um pedido já realizado, com o `id` enviado nos parâmetros da rota.
-
-- `GET /order/:id`: Essa rota recebe o `id` nos parâmetros e retorna um pedido específico.
-
-- `PATCH /order/:id`: Essa rota recebe o `id` nos parâmetros e sempre que acionada, altera o status do pedido recebido, pelo id para "Pronto".
+- `DELETE /order/:id`: Essa rota deleta uma imagem salva no banco de dados via `id`, enviado nos parâmetros da rota.
 
 
 ### Exemplo:
 
-Se chamar a rota `POST /order` repassando `{ order: "X- Salada, 2 batatas grandes, 1 coca-cola", clienteName:"José", price: 44.50 }`,
-o array deve fica desta forma:
+Se chamarmos a rota `POST /pictures` repassando `{ Form Fields, name: Imagem 1 }`,
+teremos:
 
 ```js
-[
-  {
-    id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8",
-    order: "X- Salada, 2 batatas grandes, 1 coca-cola",
-    clienteName:"José", 
-    price: 44.50,
-    status:"Em preparação"
-  }
-];
+{
+  "picture": {
+    "name": "Imagem 1",
+    "src": "uploads\\1675815114935.jpg",
+    "_id": "63e2e8ca93f9d4d01e1f5733",
+    "__v": 0
+  },
+  "msg": "Imagem salva com sucesso"
+}
 ```
 
 
-Se chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`,
-o array sofre a seguinte alteração:
+Se chamarmos a rota "delete /pictures/" `http://localhost:4000/pictures/63e2e8ca93f9d4d01e1f5733`,
+deletaremos o arquivo pelo seu id:
 
 ```js
-[
-  {
-    id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8",
-    order: "X- Salada, 2 batatas grandes, 1 coca-cola",
-    clienteName:"José", 
-    price: 44.50,
-    status:"Pronto"
-  }
-];
+{
+  "message": "Imagem removida com sucesso!!"
+}
 ```
-
-### Middlewares
-
-- Middleware checkOrderId:
-Utilizado em todas rotas que recebem o parâmetro ID, verifica se o ID passado existe. Caso não exista, retorne uma mensagem de erro, caso contrário permite que requisição continue normalmente;
-
-- Middleware methUrl:
-Chamado em todas requisições que tenha um console.log.
-Mostra o método da requisiçao (GET, POST, PUT, DELETE e PATCH) seguido da url da requisição.
-
-### Exemplo:
-[POST] - /order
-
 
 
 
